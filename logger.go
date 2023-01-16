@@ -6,7 +6,7 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-var sugarLogger *zap.SugaredLogger
+var SugarLogger *zap.SugaredLogger
 
 type Config struct {
 	Filename   string
@@ -17,56 +17,56 @@ type Config struct {
 }
 
 func Info(args ...interface{}) {
-	if sugarLogger == nil {
+	if SugarLogger == nil {
 		panic("please init log handler")
 	}
-	sugarLogger.Info(args)
+	SugarLogger.Info(args)
 }
 
 func Infof(template string, args ...interface{}) {
-	if sugarLogger == nil {
+	if SugarLogger == nil {
 		panic("please init log handler")
 	}
-	sugarLogger.Infof(template, args)
+	SugarLogger.Infof(template, args)
 }
 
 func Warn(args ...interface{}) {
-	if sugarLogger == nil {
+	if SugarLogger == nil {
 		panic("please init log handler")
 	}
-	sugarLogger.Warn(args)
+	SugarLogger.Warn(args)
 }
 
 func Warnf(template string, args ...interface{}) {
-	if sugarLogger == nil {
+	if SugarLogger == nil {
 		panic("please init log handler")
 	}
-	sugarLogger.Warnf(template, args)
+	SugarLogger.Warnf(template, args)
 }
 
 func Error(args ...interface{}) {
-	if sugarLogger == nil {
+	if SugarLogger == nil {
 		panic("please init log handler")
 	}
-	sugarLogger.Error(args)
+	SugarLogger.Error(args)
 }
 func Errorf(template string, args ...interface{}) {
-	if sugarLogger == nil {
+	if SugarLogger == nil {
 		panic("please init log handler")
 	}
-	sugarLogger.Errorf(template, args)
+	SugarLogger.Errorf(template, args)
 }
 func Panic(args ...interface{}) {
-	if sugarLogger == nil {
+	if SugarLogger == nil {
 		panic("please init log handler")
 	}
-	sugarLogger.Panic(args)
+	SugarLogger.Panic(args)
 }
 func Panicf(template string, args ...interface{}) {
-	if sugarLogger == nil {
+	if SugarLogger == nil {
 		panic("please init log handler")
 	}
-	sugarLogger.Panicf(template, args)
+	SugarLogger.Panicf(template, args)
 }
 
 func InitLog(conf * Config){
@@ -78,10 +78,10 @@ func InitLog(conf * Config){
 	core := zapcore.NewCore(encoder, writeSyncer, zapcore.DebugLevel)
 
 	logger := zap.New(core, zap.AddCaller())
-	sugarLogger = logger.Sugar()
+	SugarLogger = logger.Sugar()
 }
 func CloseLog()error{
-	return sugarLogger.Sync()
+	return SugarLogger.Sync()
 }
 
 func getEncoder() zapcore.Encoder {
