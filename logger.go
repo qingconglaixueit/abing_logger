@@ -1,6 +1,7 @@
 package abing_logger
 
 import (
+	"github.com/natefinch/lumberjack"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -68,7 +69,7 @@ func Panicf(template string, args ...interface{}) {
 	sugarLogger.Panicf(template, args)
 }
 
-func Init(conf * Config){
+func InitLog(conf * Config){
 	if conf == nil{
 		panic("please init log handler")
 	}
