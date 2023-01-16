@@ -29,7 +29,7 @@ func Infof(template string, args ...interface{}) {
 	sugarLogger.Infof(template, args)
 }
 
-func Warn(args ...interface) {
+func Warn(args ...interface{}) {
 	if sugarLogger == nil {
 		panic("please init log handler")
 	}
@@ -43,7 +43,7 @@ func Warnf(template string, args ...interface{}) {
 	sugarLogger.Warnf(template, args)
 }
 
-func Error(args ...interface) {
+func Error(args ...interface{}) {
 	if sugarLogger == nil {
 		panic("please init log handler")
 	}
@@ -55,7 +55,7 @@ func Errorf(template string, args ...interface{}) {
 	}
 	sugarLogger.Errorf(template, args)
 }
-func Panic(args ...interface) {
+func Panic(args ...interface{}) {
 	if sugarLogger == nil {
 		panic("please init log handler")
 	}
